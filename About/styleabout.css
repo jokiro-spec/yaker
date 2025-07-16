@@ -1,0 +1,447 @@
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.6em;
+  font-weight: bold;
+  color: black;
+  gap: 10px;
+}
+
+.logo-icon {
+  width: 28px;
+ height: 28px;
+} 
+.top-bar {
+  background-color: #ee2626;
+  color: rgb(0, 0, 0);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 20px;
+  font-size: 0.9em;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1001;
+  margin-bottom: 0px;
+  margin: 0px;
+}
+
+/* Lado izquierdo (idioma + logo + texto) */
+.left-side {
+  display: flex;
+  align-items: center;
+  gap: 40px; /* espacio entre ES|EN y logo/texto */
+}
+
+/* Logo y texto muy pegados */
+.logo-group {
+  display: flex;
+  align-items: center;
+  gap: 5px; /* casi pegados, puedes reducir a 0 si quieres más */
+}
+
+.logo-icon {
+  height: 35px;
+}
+
+.school-name {
+  font-weight: bold;
+  font-size: 1em;
+  color: black;
+}
+
+.top-links {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* separación entre enlaces */
+  padding-right: 20px; /* espacio con el borde derecho */
+  margin: 20px;
+  margin: bottom 0;;
+}
+
+.top-links a {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.top-links a:hover {
+  text-decoration: underline;
+}
+
+/* Banda amarilla fija debajo de la roja */
+.main-nav {
+  background-color: yellow;
+  padding: 10px 20px;
+  position: fixed;
+  top: 48px; /* Asegúrate que coincide con la altura real de la barra roja */
+  width: 100%;
+  z-index: 1000;
+  margin-top: 0;
+  margin: 20px;
+  margin-left: 0px;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: center;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 50px; /* espacio entre los elementos */
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+/* Lista de enlaces */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px; /* espacio entre los botones */
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilo de cada enlace */
+.nav-links li a {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+/* Animación al pasar el mouse */
+.nav-links li a:hover {
+  color: #2945ce; /* color azul al pasar el mouse */
+}
+
+/* Estructura para dropdown dentro de top-links */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  right: 0;
+  background-color: #fff;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+  z-index: 999;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+/* Estilo de enlaces con efecto botón */
+.dropdown-content a {
+  background-color: #e0e0e0;
+  color: #000;
+  text-decoration: none;
+  padding: 10px;
+  margin: 4px 0;
+  display: block;
+  border-radius: 4px;
+  transition: transform 0.3s ease, background-color 0.3s;
+}
+
+/* Efecto de zoom al pasar el mouse */
+.dropdown-content a:hover {
+  background-color: #ccc;
+  transform: scale(1.05);
+}
+
+
+body {
+  padding-top: 100px; /* Suma de la altura de ambas barras */
+  margin: 0;
+}
+/*Slider de imágenes */
+.image-slider {
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  position: relative;
+}
+
+.slider-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.slider-image.active {
+  opacity: 1;
+  z-index: 1;
+}
+.imagen-con-texto {
+  position: relative;
+  text-align: center;
+  margin-top: 0px;
+}
+
+.imagen-con-texto h2 {
+  position: absolute;
+  top: 20px;
+  width: 100%;
+  color: black;
+  font-size: 32px;
+  font-weight: bold;
+  z-index: 2;
+}
+
+.imagen-con-texto img {
+  width: 100%;
+  height: auto;
+  opacity: 0;
+  animation: desvanecer 2s ease-in-out forwards;
+  z-index: 1;
+}
+
+/* Animación de desvanecimiento */
+@keyframes desvanecer {
+  from {
+    opacity: 0;
+    transform: translateY(20px); /* opcional: aparece desde abajo */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Galería contenedora */
+.galeria-contenedor {
+  position: relative;
+  width: 90%;
+  margin: 40px auto;
+  overflow: hidden;
+  perspective: 1200px; /* perspectiva para el efecto 3D */
+}
+
+/* Galería con scroll horizontal*/
+.galeria {
+  display: flex;
+  transition: transform 0.5s ease;
+  gap: 10px;
+  padding: 20px 0; /* Espacio arriba y abajo */
+  overflow-x: auto; /* Permitir scroll horizontal */
+  scroll-snap-type: x mandatory; /* Habilitar snap */
+}
+
+/* Mostrar 5 cajas pequeñas en fila */
+.caja {
+  flex: 0 0 20%; /* 5 cajas visibles (100% / 5 = 20%) */
+  transition: transform 0.3s ease;
+  perspective: 800px;
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+/* Imagen cuadrada */
+.caja img {
+  width: 100%;
+  aspect-ratio: 1 / 1; /* cuadrado */
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+/*animacion al pasar el raton */
+.caja:hover img {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 20, 0.2);
+}
+/* Texto más grande debajo */
+.caja h3 {
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 10px 0 5px;
+}
+
+.caja h3 a {
+  color: #222;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.caja h3 a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+/* Flechas sobrepuestas */
+.flecha {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 5px;
+  z-index: 10;
+}
+
+.flecha.izquierda {
+  left: 0;
+}
+
+.flecha.derecha {
+  right: 0;
+}
+/* Apartado Yale School of Art */
+.apartado-yale {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #333;
+  text-align: justify;
+}
+
+.apartado-yale p {
+  margin: 0;
+  text-align: center;
+}
+/*cajas verticales*/
+.contenedor-cajas {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 20px;
+}
+
+.caja-vertical {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px;
+  border: 4px solid brown;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+/* Animación al pasar el mouse */
+.caja-vertical:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/*fondo degradado para caja 1 */
+.caja-vertical:nth-child(1) {
+  background: linear-gradient(135deg, #a3d8f4, #cba6f7, #f5b1e3);
+}
+/*Fondo degradado para caja 2*/
+.caja-vertical:nth-child(2) {
+  background: linear-gradient(135deg, #f7a1a1, #fcd5ce, #fbb1bd);
+}
+.caja-vertical.inversa {
+  flex-direction: row-reverse;
+}
+
+.caja-vertical img {
+  width: 250px;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+  transition: opacity 0.4s ease;
+}
+
+.caja-vertical .texto {
+  flex: 1;
+}
+
+.caja-vertical h3 {
+  font-weight: bold;
+  margin-bottom: 10px;
+ 
+}
+
+.caja-vertical p {
+  font-size: 1em;
+  line-height: 1.5;
+}
+
+/* Footer */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background-color: #001f4d;
+  color: white;
+  padding: 30px 40px;
+  font-size: 0.95em;
+}
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  max-width: 60%;
+}
+
+.footer-left img {
+  width: 120px;
+  margin-bottom: 20px;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.footer-links a {
+  color: white;
+  text-decoration: none;
+  width: 45%;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.footer-copy {
+  color: #ccc;
+  font-size: 0.9em;
+  line-height: 1.5;
+}
+
+.footer-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+.footer-right a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer-right a:hover {
+  text-decoration: underline;
+}
+
+
+
+
+
